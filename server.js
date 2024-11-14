@@ -1,6 +1,6 @@
 import  express from 'express';
 import bodyParser from  'body-parser';
-
+import cors from 'cors'
 
 
 
@@ -9,6 +9,16 @@ const app = express();
 import db from './database/db.js'
 
 const PORT = process.env.PORT || 3000;
+
+
+const corsOptions = {
+    origin: '*', // Reemplaza con la URL de tu dominio
+    optionsSuccessStatus: 200 // Algunos navegadores antiguos (IE11, ciertos SmartTVs) necesitan esto
+};
+
+// Aplicar el middleware de CORS
+app.use(cors(corsOptions));
+
 
 // Configuración de middlewares
 app.use(bodyParser.json());
